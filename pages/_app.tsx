@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { usePocketBase } from "../src/hooks/usePocketbase";
 import HomePage from ".";
 import LoginPage from "./login";
@@ -12,10 +12,15 @@ export default function App({ Component, pageProps }: AppProps) {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isLoading, setLoading] = useState(true);
 
-  useEffect(() => {
-    setLoading(false)
+
+  const fetch = useCallback(() => {
     setLoggedIn(client.authStore.isValid);
-  });
+    setLoading(false);
+  }, []);
+
+  useEffect(() => {
+    fetch();
+  }, [fetch]);
 
   if (isLoading) {
     return <div className="flex flex-col min-h-screen justify-center items-center"><Spinner aria-label="Loading..." size="xl" /></div>;
