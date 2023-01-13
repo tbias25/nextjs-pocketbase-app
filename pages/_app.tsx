@@ -12,12 +12,10 @@ export default function App({ Component, pageProps }: AppProps) {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isLoading, setLoading] = useState(true);
 
+  setLoggedIn(client.authStore.isValid);
+
   useEffect(() => {
-    setLoggedIn(client.authStore.isValid);
     setLoading(false)
-  });
-  client.authStore.onChange(() => {
-    setLoggedIn(client.authStore.isValid);
   });
 
   if (isLoading) {
