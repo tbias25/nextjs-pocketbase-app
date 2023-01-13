@@ -9,7 +9,17 @@ import { Spinner } from "flowbite-react";
 export default function App({ Component, pageProps }: AppProps) {
   const { client } = usePocketBase();
   const [isLoggedIn, setLoggedIn] = useState(client.authStore.isValid);
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      setLoggedIn(client.authStore.isValid);
+      setLoading(true);
+      console.log("isLoggedIn changed")
+    }
+    setLoading(false);
+    console.log("isLogged", isLoggedIn);
+  }, [client, isLoading, isLoggedIn]);
 
   if (isLoading) {
     return (
