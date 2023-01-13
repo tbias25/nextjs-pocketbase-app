@@ -14,8 +14,10 @@ export default function App({ Component, pageProps }: AppProps) {
 
 
   const fetch = useCallback(() => {
-    setLoggedIn(client.authStore.isValid);
-    setLoading(false);
+    if (isLoading) {
+      setLoggedIn(client.authStore.isValid);
+      setLoading(false);
+    }
   }, []);
 
   useEffect(() => {
