@@ -44,9 +44,11 @@ export default function DocumentPage() {
       console.log("toData: ", signaturePad.toData());
       console.log("toDataURL: ", signaturePad.toDataURL());
       console.log("toSVG: ", signaturePad.toSVG());
+      const file = base64ToFile(signaturePad.toDataURL(), "signature.png");
+      console.log(file);
       const data = {
         user: client.authStore.model?.id,
-        file: base64ToFile(signaturePad.toDataURL(), "signature.png"),
+        file: file,
       };
       client.collection("signatures").create(data);
     }
