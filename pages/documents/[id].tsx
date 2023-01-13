@@ -48,7 +48,7 @@ export default function DocumentPage() {
       console.log(file);
       const data = {
         user: client.authStore.model?.id,
-        file: file,
+        file: file.stream(),
       };
       client.collection("signatures").create(data);
     }
