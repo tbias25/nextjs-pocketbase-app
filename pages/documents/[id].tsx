@@ -21,6 +21,18 @@ export default function DocumentPage() {
     signaturePad.instance.clear();
   }
 
+  function base64ToFile(base64: string, filename: string): File {
+    const arr = base64.split(',');
+    const mime = arr[0].match(/:(.*?);/)[1];
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, { type: mime });
+}
+
   function handleSave() {
     const signaturePad = padRef.current;
     if (!signaturePad) {
@@ -33,9 +45,9 @@ export default function DocumentPage() {
       console.log("toDataURL: ", signaturePad.toDataURL());
       console.log("toSVG: ", signaturePad.toSVG());
       const data = {
-        "user": client.authStore.model?.id,
-        "file": signaturePad.toSVG(),
-      }
+        user: client.authStore.model?.id,
+        file: base64ToFile(signaturePad.toDataURL(), "signature.png"),
+      };
       client.collection("signatures").create(data);
     }
   }
@@ -43,12 +55,12 @@ export default function DocumentPage() {
   const getDocument = async () => {
     try {
       const record = await client.collection("documents").getOne(`${id}`);
-      console.log(record)
+      console.log(record);
     } catch (error) {
       console.log("Error occurred while fetching data", error);
     }
   };
-  
+
   useEffect(() => {
     getDocument();
   });
@@ -64,9 +76,9 @@ export default function DocumentPage() {
       <div className="flex flex-col gap-2 justify-center items-center">
         <Card>
           <div className="flex flex-row justify-between items-center">
-          <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            {id}
-          </h5>
+            <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              {id}
+            </h5>
             <BackButton />
           </div>
           <div className="bg-gray-100 rounded-lg border-2 border-gray-300">
