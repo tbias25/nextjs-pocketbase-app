@@ -14,6 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     setLoggedIn(client.authStore.isValid);
     setLoading(false);
+    console.log("isLoggedIn", isLoggedIn);
   }, [client, isLoading, isLoggedIn]);
 
   if (isLoading) {
