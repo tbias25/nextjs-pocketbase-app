@@ -13,7 +13,7 @@ export default function HomePage() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex flex-wrap gap-2 justify-start items-start">
+      <div className="flex flex-wrap gap-2 justify-start">
         <Card>
           <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             Konto
@@ -36,59 +36,6 @@ export default function HomePage() {
           <p className="font-normal text-gray-700 dark:text-gray-400">
             updated: {client.authStore.model?.updated}
           </p>
-        </Card>
-        <Card>
-        <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            Nachrichten
-          </h5>
-          <Timeline>
-            <Timeline.Item>
-              <Timeline.Point />
-              <Timeline.Content>
-                <Timeline.Time>February 2022</Timeline.Time>
-                <Timeline.Title>
-                  Application UI code in Tailwind CSS
-                </Timeline.Title>
-                <Timeline.Body>
-                  Get access to over 20+ pages including a dashboard layout,
-                  charts, kanban board, calendar, and pre-order E-commerce &
-                  Marketing pages.
-                </Timeline.Body>
-                <Button color="gray">Learn More</Button>
-              </Timeline.Content>
-            </Timeline.Item>
-            <Timeline.Item>
-              <Timeline.Point />
-              <Timeline.Content>
-                <Timeline.Time>February 2022</Timeline.Time>
-                <Timeline.Title>
-                  Application UI code in Tailwind CSS
-                </Timeline.Title>
-                <Timeline.Body>
-                  Get access to over 20+ pages including a dashboard layout,
-                  charts, kanban board, calendar, and pre-order E-commerce &
-                  Marketing pages.
-                </Timeline.Body>
-                <Button color="gray">Learn More</Button>
-              </Timeline.Content>
-            </Timeline.Item>
-            <Timeline.Item>
-              <Timeline.Point />
-              <Timeline.Content>
-                <Timeline.Time>February 2022</Timeline.Time>
-                <Timeline.Title>
-                  Application UI code in Tailwind CSS
-                </Timeline.Title>
-                <Timeline.Body>
-                  Get access to over 20+ pages including a dashboard layout,
-                  charts, kanban board, calendar, and pre-order E-commerce &
-                  Marketing pages.
-                </Timeline.Body>
-                <Button color="gray">Learn More</Button>
-              </Timeline.Content>
-            </Timeline.Item>
-          </Timeline>
-          <Button color="light">Load more</Button>
         </Card>
       </div>
     </>
