@@ -42,7 +42,7 @@ export default function Header() {
           label={
             <Avatar
               alt="Avatar"
-              img={`http://212.227.165.185/api/files/${client.authStore.model?.collectionId}/${client.authStore.model?.id}/${client.authStore.model?.avatar}`}
+              img={`https://tbias25.de/api/files/${client.authStore.model?.collectionId}/${client.authStore.model?.id}/${client.authStore.model?.avatar}`}
               rounded={true}
               size="sm"
             />

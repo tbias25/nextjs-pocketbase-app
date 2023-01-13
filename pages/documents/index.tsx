@@ -75,7 +75,7 @@ export default function DocumentListPage() {
                 <Timeline.Title>{document.name}</Timeline.Title>
                 <Timeline.Body></Timeline.Body>
                 <Button.Group>
-                  <Button href={`http://212.227.165.185/api/files/${document.collectionId}/${document.id}/${document.file}`} color="gray">Herunterladen</Button>
+                  <Button href={`https://tbias25.de/api/files/${document.collectionId}/${document.id}/${document.file}`} color="gray">Herunterladen</Button>
                   <Button href={`/documents/${document.id}`} color="gray">
                   Unterschreiben
                   </Button>       
