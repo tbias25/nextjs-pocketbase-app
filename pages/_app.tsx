@@ -12,18 +12,12 @@ export default function App({ Component, pageProps }: AppProps) {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isLoading, setLoading] = useState(true);
 
-
-  const fetch = useCallback(() => {
+  useEffect(() => {
     if (isLoading) {
       setLoggedIn(client.authStore.isValid);
       setLoading(false);
     }
-  }, []);
-
-  useEffect(() => {
-    fetch();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fetch]);
+  }, [isLoading, isLoggedIn]);
 
   if (isLoading) {
     return <div className="flex flex-col min-h-screen justify-center items-center"><Spinner aria-label="Loading..." size="xl" /></div>;
