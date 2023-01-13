@@ -29,7 +29,7 @@ export interface ISignature {
 }
 
 export const usePocketBase = () => {
-    const client = new PocketBase('http://212.227.165.185:80');
+    const client = new PocketBase('https://tbias25.de:443');
 	client.autoCancellation(false)
 
     function logIn(email: string, password: string) {
