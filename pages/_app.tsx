@@ -1,8 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePocketBase } from "../src/hooks/usePocketbase";
-import HomePage from ".";
 import LoginPage from "./login";
 import Layout from "../src/components/Layout";
 import { Spinner } from "flowbite-react";
