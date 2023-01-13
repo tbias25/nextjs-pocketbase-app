@@ -46,7 +46,10 @@ export default function DocumentPage() {
       formData.append("user", client.authStore.model?.id);
       formData.append("file", file)
       const result = client.collection("signatures").create(formData);
-      client.collection("documents").update(id.toString(), result)
+      const data = {
+        "signatures": result,
+      }
+      client.collection("documents").update(id.toString(), data)
     }
   }
 
