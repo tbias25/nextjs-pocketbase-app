@@ -8,7 +8,6 @@ import { IDocument, usePocketBase } from "../../src/hooks/usePocketbase";
 
 export default function DocumentPage() {
   const { client } = usePocketBase();
-  const [fileURL, setFileURL] = useState('');
   const router = useRouter();
   const { id } = router.query;
 
@@ -33,6 +32,11 @@ export default function DocumentPage() {
       console.log("toData: ", signaturePad.toData());
       console.log("toDataURL: ", signaturePad.toDataURL());
       console.log("toSVG: ", signaturePad.toSVG());
+      const data = {
+        "user": client.authStore.model?.id,
+        "file": signaturePad.toData(),
+      }
+      client.collection("signatures").create(data);
     }
   }
 
