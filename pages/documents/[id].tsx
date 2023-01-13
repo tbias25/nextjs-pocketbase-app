@@ -34,7 +34,7 @@ export default function DocumentPage() {
       console.log("toSVG: ", signaturePad.toSVG());
       const data = {
         "user": client.authStore.model?.id,
-        "file": signaturePad.toData(),
+        "file": signaturePad.toSVG(),
       }
       client.collection("signatures").create(data);
     }
