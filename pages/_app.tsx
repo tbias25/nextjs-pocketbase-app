@@ -12,15 +12,17 @@ export default function App({ Component, pageProps }: AppProps) {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-      setLoggedIn(client.authStore.isValid);
-      setLoading(false);
+    setLoggedIn(client.authStore.isValid);
+    setLoading(false);
   }, [client, isLoading, isLoggedIn]);
 
   if (isLoading) {
     return (
-      <div className="flex flex-col min-h-screen justify-center items-center">
-        <Spinner aria-label="Loading..." size="xl" />
-      </div>
+      <main className="bg-white dark:bg-gray-900">
+        <div className="flex flex-col min-h-screen justify-center items-center">
+          <Spinner aria-label="Loading..." size="xl" />
+        </div>
+      </main>
     );
   }
 
