@@ -11,12 +11,6 @@ export default function App({ Component, pageProps }: AppProps) {
   const [isLoggedIn, setLoggedIn] = useState(client.authStore.isValid);
   const [isLoading, setLoading] = useState(true);
 
-  useEffect(() => {
-    setLoggedIn(client.authStore.isValid);
-    setLoading(false);
-    console.log("isLoggedIn", isLoggedIn);
-  }, [client, isLoading, isLoggedIn]);
-
   if (isLoading) {
     return (
       <main className="bg-white dark:bg-gray-900">
