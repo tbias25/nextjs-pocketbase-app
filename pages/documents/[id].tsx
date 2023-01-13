@@ -41,15 +41,12 @@ export default function DocumentPage() {
     if (signaturePad.isEmpty()) {
       console.log("pad empty");
     } else {
-      console.log("toData: ", signaturePad.toData());
-      console.log("toDataURL: ", signaturePad.toDataURL());
-      console.log("toSVG: ", signaturePad.toSVG());
       const file = base64ToFile(signaturePad.toDataURL(), "signature.png");
-      console.log(file);
       const formData = new FormData();
       formData.append("user", client.authStore.model?.id);
       formData.append("file", file)
-      client.collection("signatures").create(formData);
+      const result = client.collection("signatures").create(formData);
+      client.collection("documents").update(id.toString(), result)
     }
   }
 
